@@ -3,7 +3,6 @@ import React from "react";
 
 export default class ErrorBoundary extends React.Component {
   state = {
-    error: {},
     hasError: false,
   };
 
@@ -12,6 +11,7 @@ export default class ErrorBoundary extends React.Component {
       hasError: true,
     };
   }
+
   componentDidMount() {
     if (import.meta.hot) {
       import.meta.hot.accept((newModule) => {
@@ -20,21 +20,22 @@ export default class ErrorBoundary extends React.Component {
     }
   }
 
-  componentDidCatch(error, info) {
-    console.log("error catched", error, info);
+  componentDidCatch(error, info) { 
     Sentry.withScope((scope) => {
       scope.setContext("stack", {
         stack: info.componentStack,
       });
 
-      Sentry.captureException(error);
+      Sentry.captureException(error, {
+        user: 'kalan'
+      })
     });
   }
 
   render() {
     const { hasError } = this.state;
     return hasError ? (
-      <div>sorry, something went wrong</div>
+      <div>sorry, something went wrong.</div>
     ) : (
       this.props.children
     );

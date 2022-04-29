@@ -16,6 +16,16 @@ export default function Notification() {
       <div className="alert alert-primary" role="alert">
         恭喜你中獎，這是通知！
       </div>
+      <div className="alert alert-primary" role="alert">
+        恭喜你中獎，這是通知！
+      </div>
+      <div className="alert alert-primary" role="alert">
+        恭喜你中獎，這是通知！
+      </div>
+      <div className="alert alert-primary" role="alert">
+        恭喜你中獎，這是通知！
+      </div>
+      
     </>
   );
 }

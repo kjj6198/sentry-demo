@@ -27,7 +27,7 @@ export default class ErrorBoundary extends React.Component {
       });
 
       Sentry.captureException(error, {
-        user: 'kalan'
+        username: 'kalan',
       })
     });
   }

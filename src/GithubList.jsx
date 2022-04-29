@@ -10,7 +10,6 @@ export default function GithubList() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const query = formData.get("query");
-    
     fetch(`https://api.github.com/search/repositories?q=${query}`)
       .then((res) => res.json())
       .then((data) => setRepos(data.items));
